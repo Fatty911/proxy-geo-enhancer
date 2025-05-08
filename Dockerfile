@@ -21,9 +21,11 @@ RUN apt-get update && \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+
 # Create a non-root user and group
 RUN groupadd --system appgroup && \
     useradd --system --gid appgroup --create-home --home-dir /home/appuser --shell /sbin/nologin appuser
+
 
 # Create application directory structure and necessary subdirectories for runtime data
 # These directories will be owned by appuser
@@ -57,6 +59,11 @@ RUN chown -R appuser:appgroup /app/frontend
 
 # Switch to the non-root user
 USER appuser
+
+
+
+ENV PYTHONPATH="/app:${PYTHONPATH}"
+
 
 # Set the working directory for running the backend application
 WORKDIR /app/backend
