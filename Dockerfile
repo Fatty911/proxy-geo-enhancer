@@ -66,4 +66,4 @@ EXPOSE ${PORT}
 
 # Define the command to run the application
 # Uvicorn will run from /app/backend, so "app.main:app" refers to /app/backend/app/main.py
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT}
