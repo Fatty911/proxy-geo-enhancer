@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订阅节点归属地校正</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>订阅节点归属地校正服务</h1>
+        <p>粘贴一个或多个订阅地址（每行一个），服务将检测每个节点的真实出口IP归属地，并在节点名称前添加国家/地区代码。</p>
+
+        <textarea id="subUrls" placeholder="在此粘贴您的订阅链接，每行一个..."></textarea>
+
+        <div class="options">
+            <label for="outputFormat">选择输出格式:</label>
+            <select id="outputFormat">
+                <option value="clash" selected>Clash (YAML)</option>
+                <option value="singbox">Sing-Box (JSON)</option>
+                <option value="v2rayn">V2RayN (Base64 Vmess/Vless/SS... 组合)</option>
+                </select>
+        </div>
+
+        <button id="processButton">生成校正后订阅</button>
+
+        <div id="loading" style="display:none;">
+            <p>正在处理，请稍候... 这可能需要几分钟，具体取决于节点数量。</p>
+            <div class="spinner"></div>
+        </div>
+
+
+        <div id="resultArea" style="display:none;">
+            <h2>处理结果:</h2>
+            <p>您的新订阅内容如下 (可直接复制使用，或右键复制链接地址)：</p>
+            <textarea id="newSubContent" readonly></textarea>
+            <p>或者，使用此链接订阅 (如果后端支持直接返回链接):</p>
+            <a id="newSubUrl" href="#" target="_blank"></a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
