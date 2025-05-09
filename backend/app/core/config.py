@@ -9,12 +9,12 @@ class Settings:
 
     # Paths for downloaded cores (relative to backend working directory)
     CORES_DIR: str = "downloaded_cores"
-    CLASH_CORE_PATH: str = os.path.join(CORES_DIR, "clash-meta")
+    CLASH_CORE_PATH: str = os.path.join(CORES_DIR, "mihomo")
     SINGBOX_CORE_PATH: str = os.path.join(CORES_DIR, "sing-box")
 
 
     # GitHub API URLs for latest versions
-    CLASH_META_LATEST_RELEASE_URL: str = "https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/latest"
+    CLASH_META_LATEST_RELEASE_URL: str = "https://api.github.com/repos/MetaCubeX/Mihomo/releases/latest"
     SINGBOX_LATEST_RELEASE_URL: str = "https://api.github.com/repos/SagerNet/sing-box/releases/latest"
 
     # Temp config paths
