@@ -82,7 +82,7 @@ async def ensure_core_binary(core_name: str, github_api_url: str, target_binary_
 
     logger.info(f"Requesting latest {core_name} release info from {github_api_url} using configured headers.")
     # !!! 关键改动: 在 httpx.AsyncClient 中传入 headers=COMMON_HEADERS !!!
-    async with httpx.AsyncClient(headers=COMMON_HEADERS, timeout=30.0) as client:
+    async with httpx.AsyncClient(headers=COMMON_HEADERS, timeout=30.0, follow_redirects=True) as client:
         try:
             response = await client.get(github_api_url)
             response.raise_for_status() # 对 4xx/5xx 错误抛出异常
@@ -197,11 +197,11 @@ async def ensure_core_binary(core_name: str, github_api_url: str, target_binary_
 
 async def get_clash_meta_binary():
     return await ensure_core_binary(
-        core_name="Clash.Meta",
+        core_name="Mihomo",
         github_api_url=settings.CLASH_META_LATEST_RELEASE_URL,
         target_binary_path=settings.CLASH_CORE_PATH,
-        asset_keyword="clash.meta", # 根据实际情况调整, e.g. "compatible"
-        executable_name_in_archive="clash-meta" # 解压后二进制文件的确切名称
+        asset_keyword="mihomo", # 根据实际情况调整, e.g. "compatible"
+        executable_name_in_archive="mihomo" # 解压后二进制文件的确切名称
     )
 
 async def get_singbox_binary():
