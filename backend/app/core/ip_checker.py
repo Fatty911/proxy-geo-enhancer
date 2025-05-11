@@ -29,5 +29,5 @@ async def get_exit_ip_country(proxy_address: str): # proxy_address like "http://
         logger.error(f"Request error checking IP via proxy {proxy_address}: {e}")
         return "ER" # Error
     except Exception as e:
-        logger.error(f"Unexpected error checking IP via proxy {proxy_address}: {e}")
+        logger.error(f"Unexpected error checking IP via proxy {proxy_address}: {type(e).__name__} - {e}", exc_info=True)
         return "XX" # Unknown / Exception
